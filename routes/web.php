@@ -1,6 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +20,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // return view('auth.login');
+
     return view('welcome');
+    
+});
+
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    route::get('export/users', [UserController::class, 'export'])->name('export.users');
+    route::get('export/products', [ProductController::class, 'export'])->name('export.products');
+    route::get('export/customers', [CustomerController::class, 'export'])->name('export.customers');
+    route::get('export/invoices', [InvoiceController::class, 'export'])->name('export.invoices');
+
+    Route::resource('user', UserController::class);
+    Route::resource('customers', CustomerController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('invoices', InvoiceController::class);
+
+    route::get('settings', [SettingController::class, 'index'])->name('setting.index');
+    route::post('store', [SettingController::class, 'store'])->name('setting.store');
+
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
