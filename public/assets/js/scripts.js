@@ -278,10 +278,13 @@ $(document).ready(function () {
         var errorCounter = validateForm();
         var URL = $('#InvoiceIndex').attr('data-url');
         if (errorCounter > 0) {
-            $('#FlashMessage').html('<div class="alert alert-danger text-white"><i class="fa fa-exclamation-circle fa-lg float-left " ></i>&nbsp;&nbsp;  ' + data.error + ' <i class="fa fa-times fa-lg" style="cursor:pointer"><i></div>').fadeIn('slow');
+            console.log("this is err");
+            // $('#FlashMessage').html('<div class="alert alert-danger text-white"><i class="fa fa-exclamation-circle fa-lg float-left " ></i>&nbsp;&nbsp;  ' + data.error + ' <i class="fa fa-times fa-lg" style="cursor:pointer"><i></div>').fadeIn('slow');
             $("#response").removeClass("alert-success").addClass("alert-danger").fadeIn();
             $("#response .message").html("<strong>Error</strong>: It appear's you have forgotten to complete something!");
         } else {
+            console.log(form_data);
+
             $.ajax({
                 url: url,
                 type: request_method,

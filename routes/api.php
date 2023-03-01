@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store')->middleware('auth:sanctum');
 
-route::get('/export/products', [ProductController::class, 'export'])->name('export.products')->middleware('auth:sanctum');
+route::get('/export/products', [ProductController::class, 'export'])/*->name('export.products')*/->middleware('auth:sanctum');

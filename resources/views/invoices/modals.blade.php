@@ -35,10 +35,10 @@
                         @endif
                         <div class="col-xs-2 float-right">
                             <div class="input-group ">
-                                <span class="input-group-addon">#{{ $setting->invoice_prefix  }}</span>
+                                <span class="input-group-addon">#{{ isset($setting->invoice_prefix) ? $setting->invoice_prefix : '' }}</span>
                                 <input type="hidden" name="invoice_id_test" value="{{  isset($invoice) ? $invoice->id  : '' }}"  id="">
                                 <input type="text" name="invoice_id" readonly id="invoice_id" class="form-control required"
-                                    placeholder="Invoice Number" aria-describedby="sizing-addon1" value="{{  isset($invoice) ? $invoice->id  : $setting->invoice_initial_value }}">
+                                    placeholder="Invoice Number" aria-describedby="sizing-addon1" value="{{  isset($invoice) ? $invoice->id  : $setting->invoice_initial_value }}"> <!--  -->
                             </div>
                         </div>
                     </div>

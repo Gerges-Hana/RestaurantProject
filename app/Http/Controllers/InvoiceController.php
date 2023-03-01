@@ -15,6 +15,7 @@ use PDF;
 
 class InvoiceController extends Controller
 {
+    public $setting;
 
     public function __construct()
     {
@@ -24,9 +25,10 @@ class InvoiceController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
+
             return response()->json(['view' => view('invoices.tableContent', ['invoices' => Invoice::with('customer')->orderByDesc('id')->get()])->render()]);
         }
-        return view(
+        return  view(
             'invoices.index',
             [
                 'products' => Product::get(['id', 'product_name', 'product_qty', 'product_price']),
@@ -38,12 +40,14 @@ class InvoiceController extends Controller
 
     public function create()
     {
+        dd("cont");
+
         return view('invoices.create', ['products' => Product::get(['id', 'product_name', 'product_qty', 'product_price']), 'customers' => Customer::get(), 'setting' => $this->setting]);
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
 
         try {
             DB::beginTransaction();
@@ -131,7 +135,7 @@ class InvoiceController extends Controller
             return $pdf->download('invoice.pdf');
         } elseif ($request->option == 'preview') {
             return $pdf->stream();
-        }else {
+        } else {
             return $pdf->download('invoice.pdf');
         }
     }

@@ -67,6 +67,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
+    
 
 </head>
 
@@ -117,7 +118,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('setting.index') }}" >
+                                    <a class="dropdown-item" href="{{ route('setting.index') }}">
                                         {{ __('Settings') }}
                                     </a>
                                 </li>
@@ -159,6 +160,8 @@
 
     </div>
     <!-- ./wrapper -->
+
+    @yield('script')
 
 </body>
 

@@ -13,7 +13,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
-
+    public $setting;
+    
     public function __construct()
     {
         $this->setting = Setting::first();

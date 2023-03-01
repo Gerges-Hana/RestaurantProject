@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,11 @@ Route::middleware(['auth'])->group(function () {
     route::get('settings', [SettingController::class, 'index'])->name('setting.index');
     route::post('store', [SettingController::class, 'store'])->name('setting.store');
 
+    Route::get('/bill', [BillController::class, 'create'])->name('bill');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::post('bill/post', [BillController::class, 'insert'])->name('bill.post');
 });
+
+

@@ -79,8 +79,8 @@
             </div>
             <div class="form-group">
                 <select name="include_tax" id="" class="form-control margin-bottom required">
-                    <option value="0"  {{ $setting->include_tax == 0 ? 'selected' : '' }}>No</option>
-                    <option value="1" {{ $setting->include_tax == 1 ? 'selected' : '' }}>Yes</option>
+                    <option value="0"  {{ (isset($setting->include_tax) && $setting->include_tax == 0) ? 'selected' : '' }}>No</option>
+                    <option value="1" {{ (isset($setting->include_tax) && $setting->include_tax == 1) ? 'selected' : '' }}>Yes</option>
                 </select>
             </div>
             <div class="form-group no-margin-bottom">

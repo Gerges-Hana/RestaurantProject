@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UserExport;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    public $setting;
 
     public function __construct()
     {

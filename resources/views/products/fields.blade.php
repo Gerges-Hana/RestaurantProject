@@ -7,7 +7,7 @@
     </div>
     <div class="col-xs-4">
         <div class="input-group">
-            <span class="input-group-addon">{{ $setting->currency }}</span>
+            <span class="input-group-addon">{{ isset($setting->currency) ? $setting->currency : '' }}</span>
             <input type="number" value="{{ isset($product) ? $product->product_price : '' }}"  name="product_price" class="form-control required" placeholder="0.00" aria-describedby="sizing-addon1">
         </div>
     </div>
